@@ -1,0 +1,8 @@
+#!/bin/sh
+brew install homebrew/php/composer
+brew install coreutils
+brew install argon/mas/mas
+brew install homebrew/php/php70
+brew install postgresql
+brew install wget
+brew install zsh

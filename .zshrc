@@ -63,16 +63,9 @@ if [ ${UID} -eq 0 ]; then
 fi
 
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-#if [ -d "$HOME/.zsh/auto-fu.zsh" ]; then
-#	source "$HOME/.zsh/auto-fu.zsh/auto-fu.zsh"
-#	function zle-line-init ()
-#	{
-#		auto-fu-init
-#	}
-#	zle -N zle-line-init
-#	zstyle ':completion:*' completer _oldlist _complete
-#fi
-#zstyle ':auto-fu:var' postdisplay $''
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi

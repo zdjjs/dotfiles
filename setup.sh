@@ -1,3 +1,5 @@
+#!/bin/sh
+
 DOT_FILES=(.gitconfig .gitignore .vim .vimrc .zshrc .zshenv)
 for file in ${DOT_FILES[@]}
 do
@@ -14,4 +16,4 @@ do
   fi
 done
 
-
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
