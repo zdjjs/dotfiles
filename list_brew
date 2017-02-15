@@ -4,5 +4,7 @@ brew install coreutils
 brew install argon/mas/mas
 brew install homebrew/php/php70
 brew install postgresql
+brew install rclone
 brew install wget
+brew install wine
 brew install zsh

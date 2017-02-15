@@ -1,5 +1,6 @@
 #!/bin/sh
 mas install 692867256 # Simplenote (1.1.8) 
 mas install 414298354 # ToyViewer (5.4.0) 
-mas install 497799835 # Xcode (8.2.1) 
 mas install 803453959 # Slack (2.4.1) 
+mas install 497799835 # Xcode (8.2.1) 
+mas install 715768417 # Microsoft Remote Desktop
