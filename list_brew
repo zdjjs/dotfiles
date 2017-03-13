@@ -1,10 +1,15 @@
 #!/bin/sh
 brew install homebrew/php/composer
 brew install coreutils
+brew install gnutls
+brew install libgphoto2
+brew install libicns
+brew install little-cms2
 brew install argon/mas/mas
 brew install homebrew/php/php70
 brew install postgresql
 brew install rclone
+brew install sane-backends
 brew install wget
 brew install wine
 brew install zsh
