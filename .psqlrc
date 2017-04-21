@@ -1,0 +1,21 @@
+\set QUIET ON
+\conninfo
+\timing on
+\set COMP_KEYWORD_CASE upper
+\set AUTOCOMMIT OFF
+\set VERBOSITY verbose
+\set ECHO_HIDDEN ON
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set ON_ERROR_ROLLBACK on
+\pset pager OFF
+\pset null (null)
+\set PROMPT1 '%[%033[1;33m%]%n%[%033[0m%]@%[%033[1;33m%]%M:%>%[%033[1;35m%]/%/ %[%033[1;31m%]%x%[%033[0m%]%R%#%[%033[0m%] '
+\set PROMPT2 '%[%033[1;33m%]%R>%[%033[0m%] '
+\unset QUIET
+
+\set settings 'select name, setting,unit,context from pg_settings;'
+\set locks  'SELECT bl.pid AS blocked_pid, a.usename AS blocked_user, kl.pid AS blocking_pid, ka.usename AS blocking_user, a.query AS blocked_statement FROM pg_catalog.pg_locks bl JOIN pg_catalog.pg_stat_activity a ON bl.pid = a.pid JOIN pg_catalog.pg_locks kl JOIN pg_catalog.pg_stat_activity ka ON kl.pid = ka.pid ON bl.transactionid = kl.transactionid AND bl.pid != kl.pid WHERE NOT bl.granted;'
+\set conninfo 'select usename, count(*) from pg_stat_activity group by usename;'
+\set activity 'select datname, pid, usename, application_name,client_addr, client_hostname, client_port, query, state from pg_stat_activity;'
+\set waits 'SELECT pg_stat_activity.pid, pg_stat_activity.query, pg_stat_activity.waiting, now() - pg_stat_activity.query_start AS \"totaltime\", pg_stat_activity.backend_start FROM pg_stat_activity WHERE pg_stat_activity.query !~ \'%IDLE%\'::text AND pg_stat_activity.waiting = true;'
