@@ -8,10 +8,14 @@ brew cask install cleanarchiver
 brew cask install clipy
 brew cask install cyberduck
 brew cask install datagrip
+brew cask install discord
 brew cask install diskwave
+brew cask install dragondisk
+brew cask install firefox
 brew cask install google-chrome
 brew cask install google-chrome-canary
 brew cask install hyperswitch
+brew cask install insomnia
 brew cask install iterm2
 brew cask install libreoffice
 brew cask install onyx
