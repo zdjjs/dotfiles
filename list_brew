@@ -1,6 +1,7 @@
 #!/bin/sh
 brew install homebrew/php/composer
 brew install coreutils
+brew install git
 brew install gnutls
 brew install isl
 brew install libgphoto2
@@ -8,6 +9,7 @@ brew install libicns
 brew install libmpc
 brew install little-cms2
 brew install argon/mas/mas
+brew install mecab-ipadic
 brew install mitmproxy
 brew install homebrew/php/php70
 brew install postgresql
