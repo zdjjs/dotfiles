@@ -1,8 +1,9 @@
 #!/bin/sh
+brew install ccze
 brew install homebrew/php/composer
 brew install coreutils
+brew install exa
 brew install git
-brew install gnutls
 brew install isl
 brew install libgphoto2
 brew install libicns
@@ -12,6 +13,7 @@ brew install argon/mas/mas
 brew install mecab-ipadic
 brew install mitmproxy
 brew install homebrew/php/php70
+brew install homebrew/php/php71
 brew install postgresql
 brew install python3
 brew install rclone
@@ -19,4 +21,5 @@ brew install sane-backends
 brew install the_silver_searcher
 brew install wget
 brew install wine
+brew install wireshark
 brew install zsh

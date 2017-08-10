@@ -9,6 +9,11 @@ else
   alias ll='ls -hl'
 fi
 
+if [ -r /usr/local/bin/exa ] ; then
+  alias ls='exa'
+  alias ll='exa -hlg --git --time-style long-iso'
+fi
+
 if [ -d $HOME/.nodebrew/current/bin ] ; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
