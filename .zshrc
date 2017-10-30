@@ -30,13 +30,16 @@ setopt numeric_glob_sort  # 辞書順ではなく数字順に並べる。
 setopt always_last_prompt
 
 HISTFILE=~/.zsh_history
-HISTSIZE=100              # メモリに保存されるヒストリの件数
+HISTSIZE=10000            # メモリに保存されるヒストリの件数
 SAVEHIST=10000            # 保存されるヒストリの件数
-setopt hist_ignore_dups   # 直前と同じコマンドはヒストリに追加しない
 setopt share_history      # 他のシェルのヒストリをリアルタイムで共有する
 setopt hist_reduce_blanks # 余分なスペースを削除してヒストリに保存する
 setopt append_history
-
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt hist_save_no_dups
+setopt EXTENDED_HISTORY
 
 # プロンプトに色を付ける
 autoload -U colors; colors
@@ -75,3 +78,11 @@ PERL5LIB="/Users/zdjjs/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LI
 PERL_LOCAL_LIB_ROOT="/Users/zdjjs/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/Users/zdjjs/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/zdjjs/perl5"; export PERL_MM_OPT;
+
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+    CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+

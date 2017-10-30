@@ -18,3 +18,6 @@ if [ -d $HOME/.nodebrew/current/bin ] ; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
 
+if [ -r /usr/local/bin/fzf ]; then
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+fi

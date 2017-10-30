@@ -1,6 +1,5 @@
 #!/bin/sh
-mas install 692867256 # Simplenote (1.1.8) 
 mas install 533978766 # Monotony (1.5) 
-mas install 803453959 # Slack (2.7.0) 
+mas install 803453959 # Slack (2.8.2) 
 mas install 1059074180 # WeatherBug (1.0.2) 
-mas install 497799835 # Xcode (8.3.3) 
+mas install 497799835 # Xcode (9.0.1) 
