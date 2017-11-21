@@ -18,3 +18,4 @@ if [ -f /usr/local/bin/brew ] ; then
   /usr/local/bin/brew leaves \
     | awk '{printf "brew install %s\n", $1}' >> $(cd $(dirname $0)/;pwd)/list_brew
 fi
+
