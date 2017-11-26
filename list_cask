@@ -9,6 +9,7 @@ brew cask install discord
 brew cask install diskwave
 brew cask install dragondisk
 brew cask install firefox
+brew cask install fontforge
 brew cask install google-chrome
 brew cask install hyperswitch
 brew cask install insomnia

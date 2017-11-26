@@ -1,5 +1,6 @@
 #!/bin/sh
 mas install 533978766 # Monotony (1.5) 
-mas install 803453959 # Slack (2.8.2) 
+mas install 803453959 # Slack (2.9.0) 
 mas install 1059074180 # WeatherBug (1.0.2) 
-mas install 497799835 # Xcode (9.0.1) 
+mas install 424182884 # CHM Reader (5.01)
+mas install 497799835 # Xcode (9.1) 

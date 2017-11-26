@@ -21,3 +21,8 @@ fi
 if [ -r /usr/local/bin/fzf ]; then
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 fi
+
+if [ -r /usr/local/opt/php72/bin ]; then
+  export PATH=/usr/local/opt/php72/bin:${PATH}
+fi
+
