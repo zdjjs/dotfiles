@@ -18,6 +18,8 @@ brew cask install libreoffice
 brew cask install onyx
 brew cask install osxfuse
 brew cask install phpstorm
+brew cask install pycharm
+brew cask install sequential
 brew cask install skim
 brew cask install the-unarchiver
 brew cask install vagrant
