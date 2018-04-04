@@ -1,3 +1,5 @@
+export HOMEBREW_NO_ANALYTICS=1
+
 if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   setopt no_global_rcs
   export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:${PATH}

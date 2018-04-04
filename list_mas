@@ -1,4 +1,4 @@
 #!/bin/sh
-mas install 497799835 # Xcode (9.2) 
+mas install 497799835 # Xcode (9.3) 
 mas install 533978766 # Monotony (1.5) 
-mas install 803453959 # Slack (3.0.5) 
+mas install 803453959 # Slack (3.1.1) 
