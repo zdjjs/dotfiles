@@ -47,6 +47,10 @@ autoload -U colors; colors
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
+if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{yellow}"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
@@ -65,14 +69,6 @@ if [ ${UID} -eq 0 ]; then
   PROMPT="%{${bg[cyan]}%}%n%{${reset_color}%}@%{${fg[cyan]}%}%m%{${reset_color}%"'${vcs_info_msg_0_}'"%# "
 fi
 
-if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
-  zcompile ~/.zshrc
-fi
-
 PATH="/Users/zdjjs/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/zdjjs/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/Users/zdjjs/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
@@ -87,7 +83,24 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+function fco() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
 
+function flog() {
+  git log --graph --color=always --date=short --decorate=short \
+      --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s' "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
 autoload -Uz bashcompinit
 bashcompinit -i
 
@@ -133,3 +146,7 @@ _bash_complete() {
   }
 
 complete -C aws_completer aws
+
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi

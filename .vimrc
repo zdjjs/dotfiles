@@ -24,9 +24,6 @@ set sidescroll=1 "左右一文字ずつスクロール
 set laststatus=2 "ステータスラインを表示
 set cmdheight=2 "メッセージ欄を2行
 
-"81桁目以降色が変わる
-execute "set colorcolumn=" . join(range(81, 9999), ',')
-
 "タブとスペース
 set noexpandtab
 set tabstop=4
