@@ -34,7 +34,7 @@ Session.vim
 *~
 # auto-generated tag files
 tags
-
+.vim/undo
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm

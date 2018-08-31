@@ -69,12 +69,6 @@ if [ ${UID} -eq 0 ]; then
   PROMPT="%{${bg[cyan]}%}%n%{${reset_color}%}@%{${fg[cyan]}%}%m%{${reset_color}%"'${vcs_info_msg_0_}'"%# "
 fi
 
-PATH="/Users/zdjjs/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/zdjjs/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/zdjjs/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/zdjjs/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/zdjjs/perl5"; export PERL_MM_OPT;
-
 function select-history() {
   BUFFER=$(history -n -r 1 | fzf --ansi --no-sort +m --query "$LBUFFER")
   CURSOR=$#BUFFER
