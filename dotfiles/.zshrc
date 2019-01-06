@@ -12,7 +12,10 @@ setopt notify            # バックグラウンドジョブの状態変化を�
 
 REPORTTIME=3
 
-fpath=(~/.zsh/zsh-completions/src $fpath)
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
 autoload -U compinit; compinit # 補完機能を有効にする
 setopt auto_list               # 補完候補を一覧で表示する(d)
 unsetopt auto_menu             # 補完キー連打で補完候補を順に表示する(d)
@@ -40,6 +43,8 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt hist_save_no_dups
 setopt EXTENDED_HISTORY
+setopt histignorealldups histsavenodups # 重複履歴を保存しない
+setopt complete_aliases
 
 # プロンプトに色を付ける
 autoload -U colors; colors
@@ -48,6 +53,7 @@ autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
 if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
@@ -137,10 +143,8 @@ _bash_complete() {
   fi
 
   return ret
-  }
+}
 
-complete -C aws_completer aws
-
-if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+if [ ! -e ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
 fi

@@ -1,10 +1,11 @@
 export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_UPGRADE_CLEANUP=1
 
-PATH="/usr/local/sbin:$PATH"
+export PATH=/usr/local/bin:${PATH}:/usr/sbin:/sbin
 
 if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   setopt no_global_rcs
-  export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:${PATH}
+  export PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
   export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}
   alias ls="ls --color -F"
   alias ll="ls -hl"
@@ -24,8 +25,4 @@ fi
 
 if [ -r /usr/local/bin/fzf ]; then
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-fi
-
-if [ -r /usr/local/bin/git ]; then
-  export PATH=/usr/local/bin/git:${PATH}
 fi
