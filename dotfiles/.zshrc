@@ -75,6 +75,21 @@ if [ ${UID} -eq 0 ]; then
   PROMPT="%{${bg[cyan]}%}%n%{${reset_color}%}@%{${fg[cyan]}%}%m%{${reset_color}%"'${vcs_info_msg_0_}'"%# "
 fi
 
+if [ -r /usr/local/bin/exa ] ; then
+  alias ls='exa'
+  alias ll='exa -hlg --git --time-style long-iso'
+elif [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
+  alias ls="ls --color -F"
+  alias ll="ls -hl"
+else
+  alias ls='ls -GF'
+  alias ll='ls -hl'
+fi
+
+if [ -r /usr/local/bin/fzf ]; then
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+fi
+
 function select-history() {
   BUFFER=$(history -n -r 1 | fzf --ansi --no-sort +m --query "$LBUFFER")
   CURSOR=$#BUFFER
