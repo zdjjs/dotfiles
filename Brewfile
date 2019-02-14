@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "simon-engledew/gocmdpev"
 brew "composer"
 brew "coreutils"
 brew "ctop"
@@ -17,10 +18,13 @@ brew "yarn"
 brew "zsh"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
+brew "simon-engledew/gocmdpev/gocmdpev"
 cask "alacritty"
 cask "docker"
 cask "kitematic"
+cask "lingon-x"
 cask "semulov"
+mas "Keynote", id: 409183694
 mas "LanScan", id: 472226235
 mas "Slack", id: 803453959
 mas "The Unarchiver", id: 425424353

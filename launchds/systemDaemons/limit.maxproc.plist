@@ -6,11 +6,8 @@
     <string>limit.maxproc</string>
     <key>ProgramArguments</key>
     <array>
-      <string>launchctl</string>
-      <string>limit</string>
-      <string>maxproc</string>
-      <string>2048</string>
-      <string>2048</string>
+      <string>~/upsource/bin/upsource.sh</string>
+      <string>start</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
