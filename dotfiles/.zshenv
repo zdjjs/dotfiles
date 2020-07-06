@@ -1,5 +1,5 @@
 setopt no_global_rcs
-export PATH=/usr/local/sbin:/usr/local/bin:${PATH}:/usr/sbin:/sbin
+export PATH=/usr/local/sbin:/usr/local/bin:${PATH}
 
 export HOMEBREW_NO_ANALYTICS=1
 

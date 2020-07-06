@@ -16,6 +16,10 @@ if [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions $fpath)
 fi
 
+if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
 autoload -U compinit; compinit # 補完機能を有効にする
 setopt auto_list               # 補完候補を一覧で表示する(d)
 unsetopt auto_menu             # 補完キー連打で補完候補を順に表示する(d)
@@ -43,7 +47,6 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt hist_save_no_dups
 setopt EXTENDED_HISTORY
-setopt histignorealldups histsavenodups # 重複履歴を保存しない
 setopt complete_aliases
 
 # プロンプトに色を付ける
@@ -98,7 +101,7 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
-function fco() {
+function gb() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
@@ -106,7 +109,7 @@ function fco() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-function flog() {
+function gl() {
   git log --graph --color=always --date=short --decorate=short \
       --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s' "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -118,6 +121,10 @@ FZF-EOF"
 }
 autoload -Uz bashcompinit
 bashcompinit -i
+
+function gp() {
+  
+}
 
 _bash_complete() {
   local ret=1
@@ -163,3 +170,4 @@ _bash_complete() {
 if [ ! -e ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
 fi
+
