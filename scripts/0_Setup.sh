@@ -75,15 +75,4 @@ defaults write -globalDomain NSRequiresAquaSystemAppearance -bool true
 defaults write -globalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write -globalDomain ShowExternalHardDrivesOnDesktop -bool false
 defaults write -globalDomain ShowRemovableMediaOnDesktop -bool false
-sudo spctl --master-disable
 sudo systemsetup -setrestartfreeze on
-
-keyboardid=$(ioreg -r -n 'Apple Internal Keyboard / Trackpad' | grep -E 'idVendor|idProduct' | head -2 | awk '{ print $4 }' | paste -s -d'-\n' -)'-0'
-defaults -currentHost write -g com.apple.keyboard.modifiermapping.${keyboardid} -array-add '
-<dict>
-  <key>HIDKeyboardModifierMappingDst</key>
-  <integer>30064771299</integer>
-  <key>HIDKeyboardModifierMappingSrc</key>
-  <integer>30064771129</integer>
-</dict>
-'

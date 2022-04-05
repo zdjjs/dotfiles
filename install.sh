@@ -11,3 +11,4 @@ for file in `\find $(dirname ${0})/scripts -maxdepth 1 -type f -name '*.sh' | so
     printf "\e[32mDONE\e[m\n"
 done
 
+sudo reboot
